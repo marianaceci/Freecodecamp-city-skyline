@@ -1,0 +1,104 @@
+Step 7
+set the overflow property to hidden to hide any scroll bars that appear when something extends past the viewport.
+
+Step 14
+Now you have something that is starting to resemble a building. Let's get into your first variable. Variable declarations begin with two dashes (-) and are given a name and a value like this: --variable-name: value;. In the .bb1 class, create a variable named --building-color1 and give it a value of #999.
+
+Step 15Passed
+To use a variable, put the variable name in parentheses with var in front of them like this: var(--variable-name). Add your variable as the value of the background-color property of the .bb1a class. Whatever value you gave the variable will be applied to whatever property you use it on. In this case, your variable has the value of #999. So #999 will be used as the value for the background-color property.
+
+Step 20
+The buildings are stacked on top of each other and running off the screen. Let's fix that. Add the properties display: flex;, align-items: flex-end;, and justify-content: space-evenly; to the background-buildings class. This will use flexbox again to evenly space the buildings across the bottom of the element.
+
+Step 25
+That one used the fallback value as well? I see the problem now! The variables you declared in .bb1 do not cascade to the .bb2 and .bb3 sibling elements. That's just how CSS works. Because of this, variables are often declared in the :root selector. This is the highest level selector in CSS; putting your variables there will make them usable everywhere. Add the :root selector to the top of your stylesheet, and move all your variable declarations there.
+
+Step 40
+Gradients in CSS are a way to transition between colors across the distance of an element. They are applied to the background property and the syntax looks like this:
+
+gradient-type(
+  color1,
+  color2
+);
+In the example, color1 is solid at the top, color2 is solid at the bottom, and in between it transitions evenly from one to the next. In .bb1a, add a gradient of type linear-gradient to the background property with --building-color1 as the first color and --window-color1 as the second.
+
+Step 46
+You can specify where you want a gradient transition to complete by adding it to the color like this:
+
+gradient-type(
+  color1,
+  color2 20%,
+  color3
+);
+Here, it will transition from color1 to color2 between 0% and 20% of the element and then transition to color3 for the rest. Add 80% to the --building-color1 color of the .bb1d gradient so you can see it in action.
+
+Step 51
+Gradient transitions often gradually change from one color to another. You can make the change a solid line like this:
+
+linear-gradient(
+  var(--first-color) 0%,
+  var(--first-color) 40%,
+  var(--second-color) 40%,
+  var(--second-color) 80%
+);
+Add a linear-gradient to .bb2b that uses --building-color2 from 0% to 6% and --window-color2 from 6% to 9%.
+
+Step 52
+You can see the hard color change at the top of the section. Change the gradient type from linear-gradient to repeating-linear-gradient for this section. This will make the four colors of your gradient repeat until it gets to the bottom of the element; giving you some stripes, and saving you from having to add a bunch of elements to create them.
+
+
+
+*******Making triangles*******
+
+Step 54
+Add these properties to .bb2a:
+
+margin: auto;
+width: 5vw;
+height: 5vw;
+border-top: 1vw solid #000;
+border-bottom: 1vw solid #000;
+border-left: 1vw solid #999;
+border-right: 1vw solid #999;
+After you add these, you can see how a thick border on an element gives you some angles where two sides meet. You are going to use that bottom border as the top of the building.
+
+Step 55
+Next, remove the width and height from .bb2a, and change the border-left and border-right to use 5vw instead of 1vw. The element will now have zero size and the borders will come together in the middle.
+
+Step 56
+Next, change the two #999 of .bb2a to transparent. This will make the left and right borders invisible.
+
+Step 57
+Remove the margin and border-top properties and values from .bb2a to turn it into a triangle for the top of the building.
+
+Step 58
+Finally, on the border-bottom property of .bb2a, change the 1vw to 5vh and change the #000 color to your --building-color2 variable. There you go, now it looks good! At any time throughout this project, you can comment out or remove the border property you added to everything at the beginning to see what the buildings will look like when that gets removed at the end.
+*******Making triangles*******
+
+Step 60
+So far, all the gradients you created have gone from top to bottom, that's the default direction. You can specify another direction by adding it before your colors like this:
+
+gradient-type(
+  direction,
+  color1,
+  color2
+);
+Fill in .bb3 with a repeating-linear-gradient. Use 90deg for the direction, your building-color3 for the first two colors, and window-color3 at 15% for the third. When you don't specify a distance for a color, it will use the values that makes sense. In this case, the first two colors will default to 0% and 7.5% because it starts at 0%, and 7.5% is half of the 15%.
+
+Step 78
+You can add multiple gradients to an element by separating them with a comma (,) like this:
+
+gradient1(
+  colors
+),
+gradient2(
+  colors
+);
+Add a repeating-linear-gradient to .fb1c below the one that's there; use your --building-color4 from 0% to 10% and --window-color4 from 10% and 90%. This will fill in behind the gradient you added last.
+
+Step 103
+This building is going to have another triangle on top. Give the top section a border-top of 5vh solid transparent, and a border-left that is 8vw, solid, and uses your building color variable as the color.
+
+Step 113
+At the top of the sky gradient color list, where you would put a direction for the gradient; add circle closest-corner at 15% 15%,. This will move the start of the gradient to 15% from the top and left. It will make it end at the closest-corner and it will maintain a circle shape. These are some keywords built into gradients to describe how it behaves.
+
